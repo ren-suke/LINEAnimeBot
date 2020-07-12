@@ -13,7 +13,7 @@ express.listen(process.env.PORT || 8000);
 express.post('/v1/webhook', line.middleware(LINE_CONFIG), async (request, response, next) => {
   response.sendStatus(200);
   const promises = [];
-  request.body.events.forEach((event) => {
+  await request.body.events.forEach(async (event) => {
     if(event.type === "message" && event.message.type === "text") {
       const messageText = event.message.text;
       const yearAndCourPattern = /^\d{4}\s[1-4]{1}$/g;

@@ -1,6 +1,6 @@
 const express = require('express')();
 const line = require('@line/bot-sdk');
-const fetch = require('node-fetch')();
+const fetch = require('node-fetch');
 
 const LINE_CONFIG = {
   channelId: process.env.LINE_CHANNEL_ID,

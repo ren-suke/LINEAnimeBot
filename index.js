@@ -3,7 +3,7 @@ import line from '@line/bot-sdk';
 const server = express();
 
 const LINE_CONFIG = {
-  channelId: process.env.LINE_CHAMNEL_ID,
+  channelId: process.env.LINE_CHANNEL_ID,
   channelAccessToken: process.env.LINE_ACCESS_TOKEN,
   channelSecret: process.env.LINE_CHANNEL_SECRET,
 };

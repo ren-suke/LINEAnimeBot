@@ -18,7 +18,14 @@ express.post('/v1/webhook', line.middleware(LINE_CONFIG), async (request, respon
       const messageText = event.message.text;
       const yearAndCourPattern = /^\d{4}\s[1-4]{1}$/g;
       if (yearAndCourPattern.test(messageText)) {
+        console.log(ANIME_API_BASEURL + messageText.replace(' ', '/'));
         const fetchResult = await fetch(ANIME_API_BASEURL + messageText.replace(' ', '/'), {method: 'GET'});
+        if (!fetchResult.ok) {
+          promises.push(lineClient.replyMessage(event.replyToken, {
+            type: "text",
+            text: "正しい形式で入力してください！！ (例：2019 1)"
+          }));
+        };
         const resultJson = await fetchResult.json();
         let replyText = '';
         resultJson.forEach((anime) => {

@@ -1,5 +1,6 @@
 const express = require('express')();
-const line = require('@line/bot-sdk')
+const line = require('@line/bot-sdk');
+const fetch = require('node-fetch')();
 
 const LINE_CONFIG = {
   channelId: process.env.LINE_CHANNEL_ID,
@@ -48,9 +49,9 @@ express.post('/v1/webhook', line.middleware(LINE_CONFIG), async (request, respon
     };
   });
   Promise.all(promises)
-      .then((response) => {
-        console.log(response, ' - proceed');
-      }).catch((error) => {
-        console.log(error);
-      })
+    .then((response) => {
+      console.log(response, ' - proceed');
+    }).catch((error) => {
+      console.log(error);
+    })
 });

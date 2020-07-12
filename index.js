@@ -46,12 +46,11 @@ express.post('/v1/webhook', line.middleware(LINE_CONFIG), async (request, respon
         }));
       };
     };
-    Promise.all(promises)
+  });
+  Promise.all(promises)
       .then((response) => {
         console.log(response, ' - proceed');
       }).catch((error) => {
         console.log(error);
       })
-  })
-
 });

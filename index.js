@@ -25,6 +25,7 @@ express.post('/v1/webhook', line.middleware(LINE_CONFIG), async (request, respon
             type: "text",
             text: "正しい形式で入力してください！！ (例：2019 1)"
           }));
+          return;
         };
         const resultJson = await fetchResult.json();
         let replyText = '';

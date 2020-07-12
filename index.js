@@ -35,6 +35,7 @@ express.post('/v1/webhook', line.middleware(LINE_CONFIG), async (request, respon
           replyText += '\n';
           replyText += anime.public_url;
           replyText += '\v';
+          replyText += '\v';
         })
         promises.push(lineClient.replyMessage(event.replyToken, {
           type: "text",

@@ -1,6 +1,5 @@
-import express from 'express';
-import line from '@line/bot-sdk';
-const server = express();
+const express = require('express');
+const line = require('@line/bot-sdk')
 
 const LINE_CONFIG = {
   channelId: process.env.LINE_CHANNEL_ID,
@@ -8,8 +7,8 @@ const LINE_CONFIG = {
   channelSecret: process.env.LINE_CHANNEL_SECRET,
 };
 
-server.listen(process.env.PORT || 8000);
-server.post('/v1/webhook', line.middleware(LINE_CONFIG), (request, response, next) => {
+express.listen(process.env.PORT || 8000);
+express.post('/v1/webhook', line.middleware(LINE_CONFIG), (request, response, next) => {
   response.sendStatus(200);
   console.log(req.body);
 });
